@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    color: rgb(240, 246, 255);
+
+    .indexContainer,
+    .stepSelected {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.2rem;
+        height: 2.2rem;
+        border: 1px solid rgb(240, 246, 255);
+        border-radius: 30px;
+        font-weight: bold;
+    }
+    
+    .stepSelected {
+        background-color: rgb(191, 226, 253);
+        color: black;
+    }
+
+    .infoContainer {
+        .stepTitle {
+            font-size: 0.8rem;
+            color: rgb(150, 153, 171);
+            margin-bottom: 0.3rem;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+    }
+}

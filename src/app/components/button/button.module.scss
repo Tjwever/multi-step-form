@@ -1,0 +1,35 @@
+.goBackBtn,
+.nextBtn,
+.confirmBtn,
+.noneBtn {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    padding: 1.1rem 0;
+    width: 8rem;
+}
+
+.noneBtn {
+   color: inherit;
+   background-color: inherit;
+   cursor: default;
+}
+
+.goBackBtn {
+    background-color: inherit;
+    color: rgb(150, 153, 171);
+}
+
+.nextBtn {
+    // rgb(71, 61, 255); for hover
+    background-color: rgb(2, 41, 90);
+    color: rgb(240, 246, 255);
+}
+
+.confirmBtn {
+    // rgb(173, 190, 255); maybe hover...
+    background-color: rgb(71, 61, 255);
+    color: rgb(240, 246, 255);
+}
