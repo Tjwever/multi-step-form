@@ -7,17 +7,21 @@ type AddOnCardProps = {
     amount: string
 }
 
-const AddOnCard: React.FC<AddOnCardProps> = ({ title, description, amount }) => {
+const AddOnCard: React.FC<AddOnCardProps> = ({
+    title,
+    description,
+    amount,
+}) => {
     return (
         <div className={styles.card}>
-            <input type='checkbox' />
-            <div>
-                <div>
-                    <div>{title}</div>
-                    <div>{description}</div>
+            <div className={styles.outerGroup}>
+                <input type='checkbox' />
+                <div className={styles.innerGroup}>
+                    <div className={styles.title}>{title}</div>
+                    <div className={styles.description}>{description}</div>
                 </div>
-                <div>{amount}</div>
             </div>
+            <div className={styles.amount}>{amount}</div>
         </div>
     )
 }
