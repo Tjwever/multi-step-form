@@ -2,22 +2,22 @@ import styles from './subscriptionSwitch.module.scss'
 import Switch from 'react-switch'
 
 type SubscriptionSwitchProps = {
-    checked: boolean
+    isYearly: boolean
     handleChange: () => void
 }
 
 const SubscriptionSwitch: React.FC<SubscriptionSwitchProps> = ({
-    checked,
+    isYearly,
     handleChange,
 }) => {
     return (
         <div className={styles.monthlyYearlyContainer}>
-            <div className={checked ? styles.monthly : styles.selected}>
+            <div className={isYearly ? styles.monthly : styles.selected}>
                 Monthly
             </div>
             <div className={styles.switch}>
                 <Switch
-                    checked={checked}
+                    checked={isYearly}
                     onChange={handleChange}
                     offColor='#02295a'
                     onColor='#02295a'
@@ -33,7 +33,7 @@ const SubscriptionSwitch: React.FC<SubscriptionSwitchProps> = ({
                     id='material-switch'
                 />
             </div>
-            <div className={!checked ? styles.yearly : styles.selected}>
+            <div className={!isYearly ? styles.yearly : styles.selected}>
                 Yearly
             </div>
         </div>

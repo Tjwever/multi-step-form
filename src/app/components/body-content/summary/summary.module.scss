@@ -1,0 +1,69 @@
+.summaryContent {
+    .summary {
+        padding: 1.3rem;
+        border-radius: 10px;
+        background-color: rgba(214, 217, 230, 0.3);
+
+        .row {
+            display: flex;
+            align-self: center;
+            justify-content: space-between;
+
+            .yourChoiceGroup {
+
+                .title {
+                    font-weight: bold;
+                    margin-bottom: .5rem;
+                }
+
+                .change {
+                    font-weight: bold;
+                    color: rgb(150, 153, 171);
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+
+            .chosenAmount {
+                font-weight: bold;
+            }
+        }
+
+        .hrStyle {
+            border: 0;
+            height: 0;
+            margin: 1.3rem auto;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .row {
+            .serviceText {
+                color: rgb(150, 153, 171);
+                margin-bottom: 1rem;
+            }
+
+            .serviceAmount {
+
+            }
+        }
+    }
+
+    .totalGroup {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        color: rgb(150, 153, 171);
+        padding: 1.3rem;
+
+        .serviceText {
+            margin-top: 5px;
+        }
+
+        .totalAmount {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: rgb(71, 61, 255);
+        }
+    }
+}

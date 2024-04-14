@@ -24,7 +24,7 @@ enum DIRECTION {
 export default function Modal() {
     const [indexStep, setIndexStep] = useState(0)
     const [selected, setSelected] = useState(false)
-    const [checked, setChecked] = useState(false)
+    const [isYearly, setIsYearly] = useState(false)
 
     const handleStepChange = (direction: string) => {
         setIndexStep((prevIndexStep) => {
@@ -41,14 +41,14 @@ export default function Modal() {
     }
 
     const handleChange = () => {
-        setChecked((prevChecked) => !prevChecked)
+        setIsYearly((prevIsYearly) => !prevIsYearly)
     }
 
     const RIGHTBODYCONTENT = [
         { body: <YourInfo /> },
-        { body: <SelectPlan checked={checked} handleChange={handleChange} /> },
-        { body: <AddOns /> },
-        { body: <Summary /> },
+        { body: <SelectPlan isYearly={isYearly} handleChange={handleChange} /> },
+        { body: <AddOns isYearly={isYearly} /> },
+        { body: <Summary isYearly={isYearly} /> },
     ]
 
     return (

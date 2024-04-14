@@ -6,29 +6,29 @@ import IconAdvanced from '../../images/IconAdvanced'
 import IconPro from '../../images/IconPro'
 
 type SelectPlanProps = {
-    checked: boolean,
+    isYearly: boolean,
     handleChange: () => void,
 }
-const SelectPlan: React.FC<SelectPlanProps> = ({ checked, handleChange}) => {
+const SelectPlan: React.FC<SelectPlanProps> = ({ isYearly, handleChange}) => {
     return (
         <div className={styles.planContent}>
                 <div className={styles.planContainer}>
                     <Plan
                         icon={<IconArcade />}
                         plan={'Arcade'}
-                        amount={!checked ? '$9/mo': '$90/yr'}
-                        isYearly={checked}
+                        amount={!isYearly ? '$9/mo': '$90/yr'}
+                        isYearly={isYearly}
                     />
                     <Plan
                         icon={<IconAdvanced />}
                         plan={'Advanced'}
-                        amount={!checked ? '$12/mo' : '$120/yr'}
-                        isYearly={checked}
+                        amount={!isYearly ? '$12/mo' : '$120/yr'}
+                        isYearly={isYearly}
                     />
                     <Plan icon={<IconPro />} plan={'Pro'} amount={'$15/mo'}
-                    isYearly={checked} />
+                    isYearly={isYearly} />
                 </div>
-                <SubscriptionSwitch checked={checked} handleChange={handleChange} />
+                <SubscriptionSwitch isYearly={isYearly} handleChange={handleChange} />
             </div>
     )
 }
