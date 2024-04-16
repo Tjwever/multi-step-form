@@ -3,12 +3,12 @@ import Switch from 'react-switch'
 
 type SubscriptionSwitchProps = {
     isYearly: boolean
-    handleChange: () => void
+    handleAnnualChange: () => void
 }
 
 const SubscriptionSwitch: React.FC<SubscriptionSwitchProps> = ({
     isYearly,
-    handleChange,
+    handleAnnualChange,
 }) => {
     return (
         <div className={styles.monthlyYearlyContainer}>
@@ -18,7 +18,7 @@ const SubscriptionSwitch: React.FC<SubscriptionSwitchProps> = ({
             <div className={styles.switch}>
                 <Switch
                     checked={isYearly}
-                    onChange={handleChange}
+                    onChange={handleAnnualChange}
                     offColor='#02295a'
                     onColor='#02295a'
                     onHandleColor='#fff'

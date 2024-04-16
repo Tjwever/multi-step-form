@@ -17,13 +17,13 @@ type SelectPlanProps = {
     isYearly: boolean
     selectedPlan: PlanDetails
     setSelectedPlan: (plan: PlanDetails) => void
-    handleChange: () => void
+    handleAnnualChange: () => void
 }
 const SelectPlan: React.FC<SelectPlanProps> = ({
     isYearly,
     selectedPlan,
     setSelectedPlan,
-    handleChange,
+    handleAnnualChange,
 }) => {
     interface IconMapping {
         [key: string]: JSX.Element
@@ -44,7 +44,7 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
                 {AVAILABLEPLANS.map((plan) => (
                     <div
                         key={plan.index}
-                        className={styles.plan}
+                        className={selectedPlan.id !== plan.index ? styles.plan : styles.selected}
                         onClick={() => {
                             console.log(
                                 'you selected the ' + plan.type + ' plan'
@@ -77,7 +77,7 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
             </div>
             <SubscriptionSwitch
                 isYearly={isYearly}
-                handleChange={handleChange}
+                handleAnnualChange={handleAnnualChange}
             />
         </div>
     )

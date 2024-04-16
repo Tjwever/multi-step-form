@@ -14,7 +14,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
     const [value, setValue] = useState('')
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAnnualChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
 
@@ -27,7 +27,7 @@ const Input: React.FC<InputProps> = ({
                 )}
             </div>
             <input type='text' />
-            {/* <input type='text' value={value} onChange={handleChange} /> */}
+            {/* <input type='text' value={value} onChange={handleAnnualChange} /> */}
         </div>
     )
 }

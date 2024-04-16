@@ -25,14 +25,15 @@ export default function Modal() {
     const [indexStep, setIndexStep] = useState(0)
     const [isYearly, setIsYearly] = useState(false)
     const [selectedPlan, setSelectedPlan] = useState({
-        id: '',
-        type: '',
-        monthlyAmount: 0,
-        yearlyAmount: 0,
+        id: '0',
+        type: 'Arcade',
+        monthlyAmount: 9,
+        yearlyAmount: 90,
     })
     const [selectedAddOns, setSelectedAddOns] = useState({
         title: '',
         value: 0,
+        isChecked: false,
     })
 
     const handleStepChange = (direction: string) => {
@@ -49,7 +50,7 @@ export default function Modal() {
         })
     }
 
-    const handleChange = () => {
+    const handleAnnualChange = () => {
         setIsYearly((prevIsYearly) => !prevIsYearly)
     }
 
@@ -61,7 +62,7 @@ export default function Modal() {
                     isYearly={isYearly}
                     selectedPlan={selectedPlan}
                     setSelectedPlan={setSelectedPlan}
-                    handleChange={handleChange}
+                    handleAnnualChange={handleAnnualChange}
                 />
             ),
         },
