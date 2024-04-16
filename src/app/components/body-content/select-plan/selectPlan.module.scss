@@ -11,6 +11,46 @@
         justify-content: space-between;
         width: 100%;
         margin-bottom: 2rem;
+
+        .plan,
+        .selected {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            flex-direction: column;
+            border-radius: 10px;
+            height: 10.8rem;
+            width: 9rem;
+            padding: 1rem;
+            cursor: pointer;
+
+            .title {
+                font-weight: bold;
+                margin-bottom: 0.2rem;
+            }
+
+            .amount {
+                color: rgb(150, 153, 171);
+                font-size: 0.8rem;
+            }
+
+            .free {
+                margin-top: 0.5rem;
+                font-weight: bold;
+                font-size: 0.7rem;
+            }
+
+        }
+
+        .plan {
+            border: 1px solid rgba(150, 153, 171, 0.3);
+
+        }
+
+        .selected {
+            background-color: rgba(2, 41, 90, 0.15);
+            border: 1px solid rgb(2, 41, 90);
+        }
     }
 }
 
