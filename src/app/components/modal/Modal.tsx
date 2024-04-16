@@ -23,8 +23,17 @@ enum DIRECTION {
 
 export default function Modal() {
     const [indexStep, setIndexStep] = useState(0)
-    const [selected, setSelected] = useState(false)
     const [isYearly, setIsYearly] = useState(false)
+    const [selectedPlan, setSelectedPlan] = useState({
+        id: '',
+        type: '',
+        monthlyAmount: 0,
+        yearlyAmount: 0,
+    })
+    const [selectedAddOns, setSelectedAddOns] = useState({
+        title: '',
+        value: 0,
+    })
 
     const handleStepChange = (direction: string) => {
         setIndexStep((prevIndexStep) => {
@@ -46,9 +55,18 @@ export default function Modal() {
 
     const RIGHTBODYCONTENT = [
         { body: <YourInfo /> },
-        { body: <SelectPlan isYearly={isYearly} handleChange={handleChange} /> },
+        {
+            body: (
+                <SelectPlan
+                    isYearly={isYearly}
+                    selectedPlan={selectedPlan}
+                    setSelectedPlan={setSelectedPlan}
+                    handleChange={handleChange}
+                />
+            ),
+        },
         { body: <AddOns isYearly={isYearly} /> },
-        { body: <Summary isYearly={isYearly} /> },
+        { body: <Summary isYearly={isYearly} selectedPlan={selectedPlan} /> },
     ]
 
     return (

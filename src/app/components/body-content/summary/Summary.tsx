@@ -1,16 +1,24 @@
 import styles from './summary.module.scss'
 
-type SummaryProps = {
-    isYearly: boolean,
+type PlanDetails = {
+    id: string
+    type: string
+    monthlyAmount: number
+    yearlyAmount: number
 }
 
-const Summary: React.FC<SummaryProps> = ({ isYearly }) => {
+type SummaryProps = {
+    isYearly: boolean,
+    selectedPlan: PlanDetails,
+}
+
+const Summary: React.FC<SummaryProps> = ({ isYearly, selectedPlan }) => {
     return (
         <div className={styles.summaryContent}>
             <div className={styles.summary}>
                 <div className={styles.row}>
                     <div className={styles.yourChoiceGroup}>
-                        <div className={styles.title}>Title ({!isYearly ? 'Monthly' : 'Yearly'})</div>
+                        <div className={styles.title}>{selectedPlan.type} ({!isYearly ? 'Monthly' : 'Yearly'})</div>
                         <div className={styles.change}>Change</div>
                     </div>
                     <div className={styles.chosenAmount}>{!isYearly ? '$9/mo' : '$10/yr'}</div>

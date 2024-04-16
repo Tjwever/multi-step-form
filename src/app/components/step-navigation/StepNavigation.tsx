@@ -11,7 +11,6 @@ export default function StepNavigation({
     title,
     isSelected,
 }: StepNavigationProps) {
-    console.log('is seleced', isSelected)
     return (
         <div className={styles.container}>
             <div
