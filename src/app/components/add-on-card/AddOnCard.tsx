@@ -15,7 +15,7 @@ const AddOnCard: React.FC<AddOnCardProps> = ({
     return (
         <div className={styles.card}>
             <div className={styles.outerGroup}>
-                <input type='checkbox' />
+                <input type='checkbox' checked={false} />
                 <div className={styles.innerGroup}>
                     <div className={styles.title}>{title}</div>
                     <div className={styles.description}>{description}</div>
