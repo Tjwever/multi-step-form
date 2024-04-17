@@ -9,7 +9,7 @@ export default function BgSidebarMobile({ width = '375', height = '172' }) {
             <defs>
                 <path id='a' d='M0 0h375v172H0z' />
             </defs>
-            <g fill='none' fill-rule='evenodd'>
+            <g fill='none' fillRule='evenodd'>
                 <mask id='b' fill='#fff'></mask>
                 <use fill='#483EFF' />
                 <g mask='url(#b)'>
@@ -31,9 +31,9 @@ export default function BgSidebarMobile({ width = '375', height = '172' }) {
                         />
                         <g
                             stroke='#FFF'
-                            stroke-linecap='round'
-                            stroke-linejoin='bevel'
-                            stroke-width='5'
+                            strokeLinecap='round'
+                            strokeLinejoin='bevel'
+                            strokeWidth='5'
                         >
                             <path d='m367.336 243.125 15.263-15.549M430.872 251.016l-17.995-15.112M399.36 271.751l-9.94 21.293' />
                         </g>
