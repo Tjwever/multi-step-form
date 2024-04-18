@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './modal.module.scss'
 import BgSidebarDesktop from '../images/BgSidebarDesktop'
 import Button from '../button/Button'
@@ -21,6 +21,14 @@ enum DIRECTION {
     NEXT = 'next',
 }
 
+type SelectedAddOns = {
+    [id: string]: {
+        title: string
+        value: number!!
+        isChecked: boolean
+    }
+}
+
 export default function Modal() {
     const [indexStep, setIndexStep] = useState(0)
     const [isYearly, setIsYearly] = useState(false)
@@ -30,11 +38,7 @@ export default function Modal() {
         monthlyAmount: 9,
         yearlyAmount: 90,
     })
-    const [selectedAddOns, setSelectedAddOns] = useState({
-        title: '',
-        value: 0,
-        isChecked: false,
-    })
+    const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOns>({})
 
     const handleStepChange = (direction: string) => {
         setIndexStep((prevIndexStep) => {
@@ -54,6 +58,23 @@ export default function Modal() {
         setIsYearly((prevIsYearly) => !prevIsYearly)
     }
 
+    const handleTotalValue = () => {
+        let total = 0
+
+        total += !isYearly ? selectedPlan.monthlyAmount : selectedPlan.yearlyAmount
+        
+        if(Object.values(selectedAddOns).length > 0) {
+            Object.values(selectedAddOns).forEach((amount) => {
+                total += amount.value
+            })
+        }
+        return total
+    }
+
+    useEffect(() => {
+        console.log('is yearly updating?', isYearly)
+    }, [isYearly])
+
     const RIGHTBODYCONTENT = [
         { body: <YourInfo /> },
         {
@@ -66,8 +87,25 @@ export default function Modal() {
                 />
             ),
         },
-        { body: <AddOns isYearly={isYearly} /> },
-        { body: <Summary isYearly={isYearly} selectedPlan={selectedPlan} /> },
+        {
+            body: (
+                <AddOns
+                    isYearly={isYearly}
+                    selectedAddOns={selectedAddOns}
+                    setSelectedAddOns={setSelectedAddOns}
+                />
+            ),
+        },
+        {
+            body: (
+                <Summary
+                    isYearly={isYearly}
+                    selectedPlan={selectedPlan}
+                    selectedAddOns={selectedAddOns}
+                    handleTotalValue={handleTotalValue}
+                />
+            ),
+        },
     ]
 
     return (

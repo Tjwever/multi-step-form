@@ -44,17 +44,18 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
                 {AVAILABLEPLANS.map((plan) => (
                     <div
                         key={plan.index}
-                        className={selectedPlan.id !== plan.index ? styles.plan : styles.selected}
+                        className={
+                            selectedPlan.id !== plan.index
+                                ? styles.plan
+                                : styles.selected
+                        }
                         onClick={() => {
-                            console.log(
-                                'you selected the ' + plan.type + ' plan'
-                            )
-                            console.log(plan)
                             setSelectedPlan({
                                 id: plan.index,
-                                type: plan.type as 'Arcade' |
-                                    'Advanced' |
-                                    'Pro',
+                                type: plan.type as
+                                    | 'Arcade'
+                                    | 'Advanced'
+                                    | 'Pro',
                                 monthlyAmount: plan.monthlyAmount,
                                 yearlyAmount: plan.yearlyAmount,
                             })

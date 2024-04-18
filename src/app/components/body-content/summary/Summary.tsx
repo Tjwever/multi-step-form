@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import styles from './summary.module.scss'
 
 type PlanDetails = {
@@ -7,41 +8,72 @@ type PlanDetails = {
     yearlyAmount: number
 }
 
-type SummaryProps = {
-    isYearly: boolean,
-    selectedPlan: PlanDetails,
+type SelectedAddOns = {
+    [id: string]: {
+        title: string
+        value: number
+        isChecked: boolean
+    }
 }
 
-const Summary: React.FC<SummaryProps> = ({ isYearly, selectedPlan }) => {
+type SummaryProps = {
+    isYearly: boolean
+    selectedPlan: PlanDetails
+    selectedAddOns: SelectedAddOns
+    handleTotalValue: () => number
+}
+
+const Summary: React.FC<SummaryProps> = ({
+    isYearly,
+    selectedPlan,
+    selectedAddOns,
+    handleTotalValue
+}) => {
     return (
         <div className={styles.summaryContent}>
             <div className={styles.summary}>
                 <div className={styles.row}>
                     <div className={styles.yourChoiceGroup}>
-                        <div className={styles.title}>{selectedPlan.type} ({!isYearly ? 'Monthly' : 'Yearly'})</div>
+                        <div className={styles.title}>
+                            {selectedPlan.type} (
+                            {!isYearly ? 'Monthly' : 'Yearly'})
+                        </div>
                         <div className={styles.change}>Change</div>
                     </div>
-                    <div className={styles.chosenAmount}>{!isYearly ? '$9/mo' : '$10/yr'}</div>
+                    <div className={styles.chosenAmount}>
+                        {!isYearly
+                            ? `$${selectedPlan.monthlyAmount}/mo`
+                            : `$${selectedPlan.yearlyAmount}/yr`}
+                    </div>
                 </div>
 
                 <hr className={styles.hrStyle} />
-                
-                <div className={styles.row}>
-                    <div className={styles.serviceText}>Online Service</div>
-                    <div className={styles.serviceAmount}>{!isYearly ? '$1/mo' : '$20/yr'}</div>
-                </div>
-                <div className={styles.row}>
-                    <div className={styles.serviceText}>Larger Storage</div>
-                    <div className={styles.serviceAmount}>{!isYearly ? '$2/mo' : '$20/yr'}</div>
-                </div>
-                <div className={styles.row}>
-                    <div className={styles.serviceText}>Larger Storage</div>
-                    <div className={styles.serviceAmount}>{!isYearly ? '$2/mo' : '$20/yr'}</div>
-                </div>
+
+                {selectedAddOns && Object.values(selectedAddOns).length > 0 ? (
+                    Object.values(selectedAddOns).map((addon) => (
+                        <div key={addon.title} className={styles.row}>
+                            <div className={styles.serviceText}>
+                                {addon.title}
+                            </div>
+                            <div className={styles.serviceAmount}>
+                                {!isYearly
+                                    ? `+$${addon.value}/mo`
+                                    : `+$${addon.value}/yr`}
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <div className={styles.row}>
+                        <div className={styles.serviceText}>
+                            No extra plans selected
+                        </div>
+                    </div>
+                )}
             </div>
+
             <div className={styles.totalGroup}>
                 <div className={styles.serviceText}>Total (per month)</div>
-                <div className={styles.totalAmount}>+$12/mo</div>
+                <div className={styles.totalAmount}>{!isYearly ? `$${handleTotalValue()}/mo` : `$${handleTotalValue()}/yr`}</div>
             </div>
         </div>
     )
