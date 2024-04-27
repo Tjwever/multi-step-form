@@ -1,33 +1,11 @@
-import { ReactNode } from 'react'
 import styles from './summary.module.scss'
-
-type PlanDetails = {
-    id: string
-    type: string
-    monthlyAmount: number
-    yearlyAmount: number
-}
-
-type SelectedAddOns = {
-    [id: string]: {
-        title: string
-        value: number
-        isChecked: boolean
-    }
-}
-
-type SummaryProps = {
-    isYearly: boolean
-    selectedPlan: PlanDetails
-    selectedAddOns: SelectedAddOns
-    handleTotalValue: () => number
-}
+import { SummaryProps } from '@/app/types/types'
 
 const Summary: React.FC<SummaryProps> = ({
     isYearly,
     selectedPlan,
     selectedAddOns,
-    handleTotalValue
+    handleTotalValue,
 }) => {
     return (
         <div className={styles.summaryContent}>
@@ -73,7 +51,11 @@ const Summary: React.FC<SummaryProps> = ({
 
             <div className={styles.totalGroup}>
                 <div className={styles.serviceText}>Total (per month)</div>
-                <div className={styles.totalAmount}>{!isYearly ? `$${handleTotalValue()}/mo` : `$${handleTotalValue()}/yr`}</div>
+                <div className={styles.totalAmount}>
+                    {!isYearly
+                        ? `$${handleTotalValue()}/mo`
+                        : `$${handleTotalValue()}/yr`}
+                </div>
             </div>
         </div>
     )

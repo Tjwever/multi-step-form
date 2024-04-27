@@ -5,20 +5,8 @@ import IconAdvanced from '../../images/IconAdvanced'
 import IconPro from '../../images/IconPro'
 import { AVAILABLEPLANS } from '@/app/data/AvailablePlans'
 import { useMemo } from 'react'
+import { SelectPlanProps } from '@/app/types/types'
 
-type PlanDetails = {
-    id: string
-    type: string
-    monthlyAmount: number
-    yearlyAmount: number
-}
-
-type SelectPlanProps = {
-    isYearly: boolean
-    selectedPlan: PlanDetails
-    setSelectedPlan: (plan: PlanDetails) => void
-    handleAnnualChange: () => void
-}
 const SelectPlan: React.FC<SelectPlanProps> = ({
     isYearly,
     selectedPlan,

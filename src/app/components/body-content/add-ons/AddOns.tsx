@@ -1,55 +1,15 @@
-import styles from './addOns.module.scss'
-// import AddOnCard from '../../add-on-card/AddOnCard'
-import { ADDONSDATA } from '../../../data/AddOnsData'
 import { useEffect } from 'react'
-
-type SelectedAddOns = {
-    [id: string]: {
-        title: string
-        value: number
-        isChecked: boolean
-    }
-}
-type AddOnProps = {
-    isYearly: boolean
-    selectedAddOns: SelectedAddOns
-    setSelectedAddOns: (addon: SelectedAddOns) => void
-}
+import { ADDONSDATA } from '../../../data/AddOnsData'
+import styles from './addOns.module.scss'
+import useAddOns from './useAddOns'
+import { AddOnProps } from '@/app/types/types'
 
 const AddOns: React.FC<AddOnProps> = ({
     isYearly,
     selectedAddOns,
     setSelectedAddOns,
 }) => {
-    const handleAddOnClick = (addon: typeof ADDONSDATA[0]) => {
-        const newSelectedAddOns: SelectedAddOns = { ...selectedAddOns }
-        if (newSelectedAddOns[addon.id]?.isChecked) {
-            // If already checked, delete it from the state
-            delete newSelectedAddOns[addon.id]
-        } else {
-            // Otherwise, add or update the add-on in the state
-            newSelectedAddOns[addon.id] = {
-                title: addon.title,
-                value: isYearly ? addon.yearlyAmount : addon.monthlyAmount,
-                isChecked: true,
-            }
-        }
-        setSelectedAddOns(newSelectedAddOns)
-    }
-
-    useEffect(() => {
-        const updatedAddOns: SelectedAddOns = {};
-        Object.keys(selectedAddOns).forEach((key) => {
-            const addon = ADDONSDATA.find((a) => a.id === key);
-            if (addon && selectedAddOns[key].isChecked) {
-                updatedAddOns[key] = {
-                    ...selectedAddOns[key],
-                    value: isYearly ? addon.yearlyAmount : addon.monthlyAmount,
-                };
-            }
-        });
-        setSelectedAddOns(updatedAddOns);
-    }, [isYearly, setSelectedAddOns]);
+    const { handleAddOnClick } = useAddOns({ isYearly, selectedAddOns, setSelectedAddOns });
 
     return (
         <div className={styles.addOnsContent}>
