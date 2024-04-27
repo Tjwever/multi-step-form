@@ -8,75 +8,39 @@ import SelectPlan from '../body-content/select-plan/SelectPlan'
 import AddOns from '../body-content/add-ons/AddOns'
 import Summary from '../body-content/summary/Summary'
 import { STEPINFO, STEPCONTENT } from '../../data/StepsData'
-
-enum NAVIGATION {
-    NONE = 'none',
-    NEXT = 'next',
-    BACK = 'goBack',
-    CONFIRM = 'confirm',
-}
-
-enum DIRECTION {
-    BACK = 'back',
-    NEXT = 'next',
-}
-
-type SelectedAddOns = {
-    [id: string]: {
-        title: string
-        value: number!!
-        isChecked: boolean
-    }
-}
+import { SelectedAddOns } from '@/app/types/types'
+import { NAVIGATION, DIRECTION } from '@/app/types/enums'
+import schema from '@/app/types/schema'
+import useModal from './useModal'
 
 export default function Modal() {
-    const [indexStep, setIndexStep] = useState(0)
-    const [isYearly, setIsYearly] = useState(false)
-    const [selectedPlan, setSelectedPlan] = useState({
-        id: '0',
-        type: 'Arcade',
-        monthlyAmount: 9,
-        yearlyAmount: 90,
-    })
-    const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOns>({})
-
-    const handleStepChange = (direction: string) => {
-        setIndexStep((prevIndexStep) => {
-            if (
-                direction === DIRECTION.NEXT &&
-                prevIndexStep < STEPCONTENT.length - 1
-            ) {
-                return prevIndexStep + 1
-            } else if (direction === DIRECTION.BACK && prevIndexStep > 0) {
-                return prevIndexStep - 1
-            }
-            return prevIndexStep
-        })
-    }
-
-    const handleAnnualChange = () => {
-        setIsYearly((prevIsYearly) => !prevIsYearly)
-    }
-
-    const handleTotalValue = () => {
-        let total = 0
-
-        total += !isYearly ? selectedPlan.monthlyAmount : selectedPlan.yearlyAmount
-        
-        if(Object.values(selectedAddOns).length > 0) {
-            Object.values(selectedAddOns).forEach((amount) => {
-                total += amount.value
-            })
-        }
-        return total
-    }
-
-    useEffect(() => {
-        console.log('is yearly updating?', isYearly)
-    }, [isYearly])
+    const {
+        indexStep,
+        isYearly,
+        selectedPlan,
+        selectedAddOns,
+        formData,
+        errors,
+        setIndexStep,
+        setSelectedPlan,
+        setSelectedAddOns,
+        setFormData,
+        setErrors,
+        handleStepChange,
+        handleAnnualChange,
+        handleTotalValue,
+        handleDataChange,
+    } = useModal()
 
     const RIGHTBODYCONTENT = [
-        { body: <YourInfo /> },
+        {
+            body: (
+                <YourInfo
+                    formData={formData}
+                    handleDataChange={handleDataChange}
+                />
+            ),
+        },
         {
             body: (
                 <SelectPlan
