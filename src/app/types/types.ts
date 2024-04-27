@@ -48,5 +48,6 @@ export type SelectPlanProps = {
 }
 
 export type YourInfoProps = {
-    setFormData?: (fieldName: string, value: string) => void
+    formData: InputDetails
+    handleDataChange?: (fieldName: string, value: string) => void
 }
