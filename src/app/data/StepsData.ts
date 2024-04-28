@@ -27,4 +27,9 @@ export const STEPCONTENT = [
         title: 'Finishing up',
         description: 'Double-check everything looks OK before confirming.',
     },
+    {
+        index: 4,
+        title: '',
+        description: '',
+    },
 ]

@@ -9,6 +9,7 @@ import Summary from '../body-content/summary/Summary'
 import { STEPINFO, STEPCONTENT } from '../../data/StepsData'
 import { NAVIGATION, DIRECTION } from '@/app/types/enums'
 import useModal from './useModal'
+import ThankYou from '../body-content/thank-you/ThankYou'
 
 export default function Modal() {
     const {
@@ -68,6 +69,9 @@ export default function Modal() {
                 />
             ),
         },
+        {
+            body: <ThankYou />,
+        },
     ]
 
     return (
@@ -103,17 +107,25 @@ export default function Modal() {
                 <div className={styles.rightFooter}>
                     <Button
                         variant={
-                            indexStep === 0 ? NAVIGATION.NONE : NAVIGATION.BACK
+                            indexStep === 4
+                                ? NAVIGATION.NONE
+                                : indexStep === 0
+                                ? NAVIGATION.NONE
+                                : NAVIGATION.BACK
                         }
                         onClick={() => handleStepChange(DIRECTION.BACK)}
+                        disabled={indexStep === 4}
                     />
                     <Button
                         variant={
-                            indexStep === 3
+                            indexStep === 4
+                                ? NAVIGATION.NONE
+                                : indexStep === 3
                                 ? NAVIGATION.CONFIRM
                                 : NAVIGATION.NEXT
                         }
                         onClick={() => handleStepChange(DIRECTION.NEXT)}
+                        disabled={indexStep === 4}
                     />
                 </div>
             </div>

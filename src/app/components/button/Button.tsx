@@ -4,9 +4,10 @@ import styles from './button.module.scss'
 type ButtonProps = {
     variant: 'goBack' | 'next' | 'confirm' | 'none'
     onClick: () => void
+    disabled?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ variant, onClick, disabled }) => {
     let buttonText: string
     let btnStyle: string
 
@@ -33,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({ variant, onClick }) => {
     }
 
     return (
-        <button className={btnStyle} onClick={onClick}>
+        <button className={btnStyle} onClick={onClick} disabled={disabled}>
             {buttonText}
         </button>
     )
