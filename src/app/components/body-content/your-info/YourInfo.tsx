@@ -2,13 +2,14 @@ import Input from '../../input/Input'
 import yourInfoSchema from '../../../types/schema'
 import { YourInfoProps } from '@/app/types/types'
 
-const YourInfo: React.FC<YourInfoProps> = ({ formData, handleDataChange }) => {
+const YourInfo: React.FC<YourInfoProps> = ({ formData, errors, showError, handleDataChange }) => {
     return (
         <>
             <Input
                 label={'Name'}
                 value={formData.name}
-                errorMessage={'This field is required'}
+                errors={errors?.name}
+                showError={showError}
                 fieldName={'name'}
                 setFormData={handleDataChange}
                 validationSchema={yourInfoSchema.pick({ name: true })}
@@ -16,7 +17,8 @@ const YourInfo: React.FC<YourInfoProps> = ({ formData, handleDataChange }) => {
             <Input
                 label={'Email Address'}
                 value={formData.emailAddress}
-                errorMessage={'This field is required'}
+                errors={errors?.emailAddress}
+                showError={showError}
                 fieldName={'emailAddress'}
                 setFormData={handleDataChange}
                 validationSchema={yourInfoSchema.pick({ emailAddress: true })}
@@ -24,7 +26,8 @@ const YourInfo: React.FC<YourInfoProps> = ({ formData, handleDataChange }) => {
             <Input
                 label={'Phone Number'}
                 value={formData.phoneNumber}
-                errorMessage={'This field is required'}
+                errors={errors?.phoneNumber}
+                showError={showError}
                 fieldName={'phoneNumber'}
                 setFormData={handleDataChange}
                 validationSchema={yourInfoSchema.pick({ phoneNumber: true })}

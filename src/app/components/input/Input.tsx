@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './input.module.scss'
 import { InputProps } from '@/app/types/types'
 
 const Input: React.FC<InputProps> = ({
     label,
     value,
-    errorMessage = '',
+    errors,
     showError,
     validationSchema,
     fieldName,
@@ -20,26 +20,23 @@ const Input: React.FC<InputProps> = ({
         if (setFormData) {
             setFormData(fieldName, value)
         }
-
-        if (validationSchema) {
-            try {
-                validationSchema.parse({ [fieldName]: value })
-                setError(null)
-            } catch (error) {
-                setError('bad bad bad')
-            }
-        }
     }
+
+    useEffect(() => {
+        if (showError || errors) {
+            console.log('Input log errors: ', errors, showError)
+        }
+    }, [showError, errors])
 
     return (
         <div className={styles.container}>
             <div className={styles.labelGroup}>
                 <label>{label}</label>
-                {showError && errorMessage && (
-                    <div style={{ color: 'red' }}>{errorMessage}</div>
+                {showError && errors && (
+                    <div style={{ color: 'red' }}>{errors}</div>
                 )}
             </div>
-            <input type='text' value={value} onChange={handleChange} />
+            <input className={styles.borderColorDefault} type='text' value={value} onChange={handleChange} />
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import styles from './modal.module.scss'
 import BgSidebarDesktop from '../images/BgSidebarDesktop'
 import Button from '../button/Button'
@@ -8,9 +7,7 @@ import SelectPlan from '../body-content/select-plan/SelectPlan'
 import AddOns from '../body-content/add-ons/AddOns'
 import Summary from '../body-content/summary/Summary'
 import { STEPINFO, STEPCONTENT } from '../../data/StepsData'
-import { SelectedAddOns } from '@/app/types/types'
 import { NAVIGATION, DIRECTION } from '@/app/types/enums'
-import schema from '@/app/types/schema'
 import useModal from './useModal'
 
 export default function Modal() {
@@ -21,11 +18,10 @@ export default function Modal() {
         selectedAddOns,
         formData,
         errors,
-        setIndexStep,
+        showError,
+        setShowError,
         setSelectedPlan,
         setSelectedAddOns,
-        setFormData,
-        setErrors,
         handleStepChange,
         handleAnnualChange,
         handleTotalValue,
@@ -37,6 +33,8 @@ export default function Modal() {
             body: (
                 <YourInfo
                     formData={formData}
+                    errors={errors}
+                    showError={showError}
                     handleDataChange={handleDataChange}
                 />
             ),

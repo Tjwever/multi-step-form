@@ -1,33 +1,41 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SelectedAddOns } from '@/app/types/types'
 import { DIRECTION } from '@/app/types/enums'
 import { STEPCONTENT } from '../../data/StepsData'
 import schema from '@/app/types/schema'
+import { ZodError } from 'zod'
+
+interface FormErrors {
+    [key: string]: string
+}
 
 const useModal = () => {
     const [indexStep, setIndexStep] = useState(0)
     const [isYearly, setIsYearly] = useState(false)
+    const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOns>({})
+    const [errors, setErrors] = useState({})
+    const [showError, setShowError] = useState(false)
     const [selectedPlan, setSelectedPlan] = useState({
         id: '0',
         type: 'Arcade',
         monthlyAmount: 9,
         yearlyAmount: 90,
     })
-    const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOns>({})
     const [formData, setFormData] = useState({
         name: '',
         emailAddress: '',
         phoneNumber: '',
     })
-    const [errors, setErrors] = useState({})
-
+    
     const handleStepChange = async (direction: string) => {
         if (direction === DIRECTION.NEXT) {
             // Validate the form before proceeding
             const isValid = await validateForm()
 
             if (!isValid) {
-                return // Do not proceed if the form is not valid
+                // console.log('form invalid')
+                // console.log('errors: ', errors)
+                return
             }
         }
         setIndexStep((prevIndexStep) => {
@@ -54,9 +62,18 @@ const useModal = () => {
     const validateForm = async () => {
         try {
             await schema.parseAsync(formData)
+            setErrors({})
             return true
         } catch (e) {
-            setErrors(errors)
+            if (e instanceof ZodError) {
+                const newErrors = e.errors.reduce((acc: FormErrors, { path, message }) => {
+                    acc[path[0]] = message;
+                    return acc;
+                }, {});
+                console.log('new errors; ', newErrors)
+                setErrors(newErrors);
+                setShowError(true);
+            }
             return false
         }
     }
@@ -87,6 +104,8 @@ const useModal = () => {
         selectedAddOns,
         formData,
         errors,
+        showError,
+        setShowError,
         setIndexStep,
         setSelectedPlan,
         setSelectedAddOns,

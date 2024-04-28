@@ -18,7 +18,14 @@
         padding: 0.7em 1em;
         width: 100%;
         border-radius: 10px;
-        border: 1px solid rgb(150, 153, 171);
         font-size: 1.3rem;
+    }
+
+    .borderColorDefault {
+        border: 1px solid rgb(150, 153, 171);
+    }
+
+    .borderColorError {
+        border: 1px solid rgb(237, 53, 72);
     }
 }

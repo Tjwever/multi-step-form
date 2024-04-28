@@ -17,15 +17,6 @@ export type InputDetails = {
     phoneNumber: string
 }
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-    label: string
-    errorMessage?: string
-    showError?: boolean
-    validationSchema?: any
-    fieldName: string
-    setFormData?: (fieldName: string, value: string) => void
-}
-
 export type PlanDetails = {
     id: string
     type: string
@@ -47,7 +38,24 @@ export type SelectPlanProps = {
     handleAnnualChange: () => void
 }
 
+export type ErrorDetails = {
+    name?: string
+    emailAddress?: string
+    phoneNumber?: string
+}
+
 export type YourInfoProps = {
     formData: InputDetails
+    errors?: ErrorDetails
+    showError?: boolean
     handleDataChange?: (fieldName: string, value: string) => void
+}
+
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+    label: string
+    errors?: string
+    showError?: boolean
+    validationSchema?: any
+    fieldName: string
+    setFormData?: (fieldName: string, value: string) => void
 }
