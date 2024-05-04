@@ -7,6 +7,7 @@ const Input: React.FC<InputProps> = ({
     value,
     errors,
     showError,
+    placeholder,
     validationSchema,
     fieldName,
     setFormData,
@@ -41,6 +42,7 @@ const Input: React.FC<InputProps> = ({
                     className={styles.borderColorError}
                     type='text'
                     value={value}
+                    placeholder={placeholder}
                     onChange={handleChange}
                 />
             ): (
@@ -48,6 +50,7 @@ const Input: React.FC<InputProps> = ({
                     className={styles.borderColorDefault}
                     type='text'
                     value={value}
+                    placeholder={placeholder}
                     onChange={handleChange}
                 />
             )}
