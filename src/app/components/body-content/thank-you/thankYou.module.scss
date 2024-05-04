@@ -3,6 +3,11 @@
     width: 23rem;
     margin: 2rem auto;
 
+    .loaderContainer {
+        margin: auto;
+        width: 150px;
+    }
+
     h1 {
         font-size: 1.5em;
         font-weight: bold;
@@ -10,7 +15,7 @@
         margin: 1rem;
     }
 
-    div {
+    .text {
         font-size: 0.8rem;
         color: rgb(150, 153, 171);
         // letter-spacing: 0.7px;
