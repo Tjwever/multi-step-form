@@ -20,7 +20,6 @@ export default function Modal() {
         formData,
         errors,
         showError,
-        setShowError,
         setSelectedPlan,
         setSelectedAddOns,
         handleStepChange,
@@ -62,6 +61,7 @@ export default function Modal() {
         {
             body: (
                 <Summary
+                    handleStepChange={handleStepChange}
                     isYearly={isYearly}
                     selectedPlan={selectedPlan}
                     selectedAddOns={selectedAddOns}

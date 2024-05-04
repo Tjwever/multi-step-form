@@ -33,10 +33,24 @@ const Input: React.FC<InputProps> = ({
             <div className={styles.labelGroup}>
                 <label>{label}</label>
                 {showError && errors && (
-                    <div style={{ color: 'red' }}>{errors}</div>
+                    <div style={{ color: 'rgb(237, 53, 72)' }}>{errors}</div>
                 )}
             </div>
-            <input className={styles.borderColorDefault} type='text' value={value} onChange={handleChange} />
+            {showError && errors ? (
+                <input
+                    className={styles.borderColorError}
+                    type='text'
+                    value={value}
+                    onChange={handleChange}
+                />
+            ): (
+                <input
+                    className={styles.borderColorDefault}
+                    type='text'
+                    value={value}
+                    onChange={handleChange}
+                />
+            )}
         </div>
     )
 }

@@ -1,7 +1,9 @@
 import styles from './summary.module.scss'
 import { SummaryProps } from '@/app/types/types'
+import { DIRECTION } from '@/app/types/enums'
 
 const Summary: React.FC<SummaryProps> = ({
+    handleStepChange,
     isYearly,
     selectedPlan,
     selectedAddOns,
@@ -16,7 +18,12 @@ const Summary: React.FC<SummaryProps> = ({
                             {selectedPlan.type} (
                             {!isYearly ? 'Monthly' : 'Yearly'})
                         </div>
-                        <div className={styles.change}>Change</div>
+                        <div
+                            className={styles.change}
+                            onClick={() => handleStepChange(DIRECTION.CHANGE)}
+                        >
+                            Change
+                        </div>
                     </div>
                     <div className={styles.chosenAmount}>
                         {!isYearly

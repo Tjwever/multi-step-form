@@ -29,12 +29,9 @@ const useModal = () => {
     
     const handleStepChange = async (direction: string) => {
         if (direction === DIRECTION.NEXT) {
-            // Validate the form before proceeding
             const isValid = await validateForm()
 
             if (!isValid) {
-                // console.log('form invalid')
-                // console.log('errors: ', errors)
                 return
             }
         }
@@ -46,6 +43,8 @@ const useModal = () => {
                 return prevIndexStep + 1
             } else if (direction === DIRECTION.BACK && prevIndexStep > 0) {
                 return prevIndexStep - 1
+            } else if (direction === DIRECTION.CHANGE) {
+                return prevIndexStep - 2
             }
             return prevIndexStep
         })

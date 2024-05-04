@@ -25,6 +25,7 @@ export type PlanDetails = {
 }
 
 export type SummaryProps = {
+    handleStepChange: (step: string) => void
     isYearly: boolean
     selectedPlan: PlanDetails
     selectedAddOns: SelectedAddOns

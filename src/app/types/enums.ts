@@ -8,4 +8,5 @@ export enum NAVIGATION {
 export enum DIRECTION {
     BACK = 'back',
     NEXT = 'next',
+    CHANGE = 'change',
 }
