@@ -44,7 +44,11 @@
 
         .plan {
             border: 1px solid rgba(150, 153, 171, 0.3);
+            transition: border 0.3s ease;
 
+            &:hover {
+                border: 1px solid rgb(2, 41, 90);
+            }
         }
 
         .selected {

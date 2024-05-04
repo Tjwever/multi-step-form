@@ -16,7 +16,7 @@ const AddOns: React.FC<AddOnProps> = ({
             {ADDONSDATA.map((addon) => (
                 <div
                     key={addon.id}
-                    className={styles.card}
+                    className={!selectedAddOns[addon.id]?.isChecked ? styles.card : styles.selected}
                     onClick={() => {
                         handleAddOnClick(addon)
                     }}
@@ -27,7 +27,7 @@ const AddOns: React.FC<AddOnProps> = ({
                             checked={
                                 selectedAddOns[addon.id]?.isChecked || false
                             }
-                            onChange={() => {console.log('changed')}}
+                            onChange={() => {console.log(selectedAddOns)}}
                         />
                         <div className={styles.innerGroup}>
                             <div className={styles.title}>{addon.title}</div>

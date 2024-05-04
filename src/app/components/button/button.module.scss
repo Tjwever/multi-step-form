@@ -20,16 +20,31 @@
 .goBackBtn {
     background-color: inherit;
     color: rgb(150, 153, 171);
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: rgb(2, 41, 90);
+    }
 }
 
 .nextBtn {
     // rgb(71, 61, 255); for hover
     background-color: rgb(2, 41, 90);
     color: rgb(240, 246, 255);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: rgb(71, 61, 255);
+    }
 }
 
 .confirmBtn {
     // rgb(173, 190, 255); maybe hover...
     background-color: rgb(71, 61, 255);
     color: rgb(240, 246, 255);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: rgb(39, 32, 161);
+    }
 }
