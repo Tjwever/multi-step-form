@@ -11,6 +11,7 @@
     .yearly {
         color: rgb(150, 153, 171);
         font-weight: bold;
+        transition: 0.3s ease;
     }
 
     .switch {
@@ -21,5 +22,6 @@
     .selected {
         color: rgb(2, 41, 90);
         font-weight: bold;
+        transition: 0.3s ease;
     }
 }

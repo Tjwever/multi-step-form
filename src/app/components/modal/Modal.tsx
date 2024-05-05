@@ -20,6 +20,7 @@ export default function Modal() {
         formData,
         errors,
         showError,
+        isGoingBack,
         setSelectedPlan,
         setSelectedAddOns,
         handleStepChange,
@@ -32,6 +33,7 @@ export default function Modal() {
         {
             body: (
                 <YourInfo
+                    isGoingBack={isGoingBack}
                     formData={formData}
                     errors={errors}
                     showError={showError}
@@ -42,6 +44,7 @@ export default function Modal() {
         {
             body: (
                 <SelectPlan
+                    isGoingBack={isGoingBack}
                     isYearly={isYearly}
                     selectedPlan={selectedPlan}
                     setSelectedPlan={setSelectedPlan}
@@ -52,6 +55,7 @@ export default function Modal() {
         {
             body: (
                 <AddOns
+                    isGoingBack={isGoingBack}
                     isYearly={isYearly}
                     selectedAddOns={selectedAddOns}
                     setSelectedAddOns={setSelectedAddOns}
@@ -61,6 +65,7 @@ export default function Modal() {
         {
             body: (
                 <Summary
+                    isGoingBack={isGoingBack}
                     handleStepChange={handleStepChange}
                     isYearly={isYearly}
                     selectedPlan={selectedPlan}

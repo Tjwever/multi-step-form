@@ -12,6 +12,7 @@ interface FormErrors {
 const useModal = () => {
     const [indexStep, setIndexStep] = useState(0)
     const [isYearly, setIsYearly] = useState(false)
+    const [isGoingBack, setIsGoingBack] = useState(false)
     const [selectedAddOns, setSelectedAddOns] = useState<SelectedAddOns>({})
     const [errors, setErrors] = useState({})
     const [showError, setShowError] = useState(false)
@@ -40,10 +41,13 @@ const useModal = () => {
                 direction === DIRECTION.NEXT &&
                 prevIndexStep < STEPCONTENT.length - 1
             ) {
+                setIsGoingBack(false)
                 return prevIndexStep + 1
             } else if (direction === DIRECTION.BACK && prevIndexStep > 0) {
+                setIsGoingBack(true)
                 return prevIndexStep - 1
             } else if (direction === DIRECTION.CHANGE) {
+                setIsGoingBack(true)
                 return prevIndexStep - 2
             }
             return prevIndexStep
@@ -104,6 +108,7 @@ const useModal = () => {
         formData,
         errors,
         showError,
+        isGoingBack,
         setShowError,
         setIndexStep,
         setSelectedPlan,

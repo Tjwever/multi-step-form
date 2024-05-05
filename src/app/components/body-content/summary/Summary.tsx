@@ -1,6 +1,7 @@
 import styles from './summary.module.scss'
 import { SummaryProps } from '@/app/types/types'
 import { DIRECTION } from '@/app/types/enums'
+import { motion } from 'framer-motion'
 
 const Summary: React.FC<SummaryProps> = ({
     handleStepChange,
@@ -10,7 +11,12 @@ const Summary: React.FC<SummaryProps> = ({
     handleTotalValue,
 }) => {
     return (
-        <div className={styles.summaryContent}>
+        <motion.div
+            className={styles.summaryContent}
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+        >
             <div className={styles.summary}>
                 <div className={styles.row}>
                     <div className={styles.yourChoiceGroup}>
@@ -64,7 +70,7 @@ const Summary: React.FC<SummaryProps> = ({
                         : `$${handleTotalValue()}/yr`}
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

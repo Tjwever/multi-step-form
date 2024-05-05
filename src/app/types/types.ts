@@ -6,6 +6,7 @@ export type SelectedAddOns = {
     }
 }
 export type AddOnProps = {
+    isGoingBack: boolean
     isYearly: boolean
     selectedAddOns: SelectedAddOns
     setSelectedAddOns: (addon: SelectedAddOns) => void
@@ -25,6 +26,7 @@ export type PlanDetails = {
 }
 
 export type SummaryProps = {
+    isGoingBack: boolean
     handleStepChange: (step: string) => void
     isYearly: boolean
     selectedPlan: PlanDetails
@@ -33,6 +35,7 @@ export type SummaryProps = {
 }
 
 export type SelectPlanProps = {
+    isGoingBack: boolean
     isYearly: boolean
     selectedPlan: PlanDetails
     setSelectedPlan: (plan: PlanDetails) => void
@@ -46,6 +49,7 @@ export type ErrorDetails = {
 }
 
 export type YourInfoProps = {
+    isGoingBack: boolean
     formData: InputDetails
     errors?: ErrorDetails
     showError?: boolean

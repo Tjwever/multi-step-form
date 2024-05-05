@@ -6,8 +6,10 @@ import IconPro from '../../images/IconPro'
 import { AVAILABLEPLANS } from '@/app/data/AvailablePlans'
 import { useMemo } from 'react'
 import { SelectPlanProps } from '@/app/types/types'
+import { motion } from 'framer-motion'
 
 const SelectPlan: React.FC<SelectPlanProps> = ({
+    isGoingBack,
     isYearly,
     selectedPlan,
     setSelectedPlan,
@@ -27,7 +29,12 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
     )
 
     return (
-        <div className={styles.planContent}>
+        <motion.div
+            className={styles.planContent}
+            initial={{ x: isGoingBack ? -300 : 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+        >
             <div className={styles.planContainer}>
                 {AVAILABLEPLANS.map((plan) => (
                     <div
@@ -58,7 +65,15 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
                                     : '$' + plan.yearlyAmount + '/yr'}
                             </div>
                             {isYearly && (
-                                <div className={styles.free}>2 months free</div>
+                                <motion.div
+                                    className={styles.free}
+                                    initial={{ y: 30, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -30, opacity: 0 }}
+                                    // transition={{ duration: 2 }}
+                                >
+                                    2 months free
+                                </motion.div>
                             )}
                         </div>
                     </div>
@@ -68,7 +83,7 @@ const SelectPlan: React.FC<SelectPlanProps> = ({
                 isYearly={isYearly}
                 handleAnnualChange={handleAnnualChange}
             />
-        </div>
+        </motion.div>
     )
 }
 
