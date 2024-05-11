@@ -1,15 +1,17 @@
+@import '../../styles/colors.scss';
+
 .monthlyYearlyContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: rgba(214, 217, 230, 0.3);
+    background-color: $transparentGray;
     border-radius: 10px;
     padding: 1rem 0;
 
     .monthly,
     .yearly {
-        color: rgb(150, 153, 171);
+        color: $coolGray;
         font-weight: bold;
         transition: 0.3s ease;
     }
@@ -20,7 +22,7 @@
     }
 
     .selected {
-        color: rgb(2, 41, 90);
+        color: $marineBlue;
         font-weight: bold;
         transition: 0.3s ease;
     }

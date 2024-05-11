@@ -1,8 +1,10 @@
+@import '../../../styles/colors.scss';
+
 .summaryContent {    
     .summary {
         padding: 1.3rem;
         border-radius: 10px;
-        background-color: rgba(214, 217, 230, 0.3);
+        background-color: $transparentGray;
         height: 232px;
 
         .row {
@@ -19,7 +21,7 @@
 
                 .change {
                     font-weight: bold;
-                    color: rgb(150, 153, 171);
+                    color: $coolGray;
                     text-decoration: underline;
                     cursor: pointer;
                 }
@@ -40,12 +42,8 @@
 
         .row {
             .serviceText {
-                color: rgb(150, 153, 171);
+                color: $coolGray;
                 margin-bottom: 1rem;
-            }
-
-            .serviceAmount {
-
             }
         }
     }
@@ -54,7 +52,7 @@
         display: flex;
         align-self: center;
         justify-content: space-between;
-        color: rgb(150, 153, 171);
+        color: $coolGray;
         padding: 1.3rem;
 
         .serviceText {
@@ -64,7 +62,7 @@
         .totalAmount {
             font-weight: bold;
             font-size: 1.4rem;
-            color: rgb(71, 61, 255);
+            color: $purplishBlue;
         }
     }
 }

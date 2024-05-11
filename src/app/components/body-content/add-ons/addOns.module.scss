@@ -1,10 +1,12 @@
+@import '../../../styles/colors.scss';
+
 .card,
 .selected {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border: 1px solid rgb(150, 153, 171);
+    border: 1px solid $coolGray;
     border-radius: 10px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -12,12 +14,12 @@
     cursor: pointer;
     
     &:hover {
-        border: 1px solid rgb(2, 41, 90);
+        border: 1px solid $marineBlue;
     }
     
     input[type=checkbox] {
         transform: scale(1.6);
-        accent-color: rgb(71, 61, 255);
+        accent-color: $purplishBlue;
         margin: 1rem;
         cursor: pointer;
 }
@@ -37,13 +39,13 @@
 
             .description {
                 font-size: 0.9rem;
-                color: rgb(150, 153, 171);
+                color: $coolGray;
             }
         }
     }
 
     .amount {
-        color: rgb(71, 61, 255);
+        color: $purplishBlue;
         font-weight: bold;
         font-size: 0.9rem;
         margin: 1rem;
@@ -51,6 +53,6 @@
 }
 
 .selected {
-    background-color: rgba(2, 41, 90, 0.08);
-    border: 1px solid rgb(2, 41, 90);
+    background-color: $transparentGray;
+    border: 1px solid $marineBlue;
 }

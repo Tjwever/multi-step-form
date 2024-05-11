@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 .thankyouContainer {
     text-align: center;
     width: 23rem;
@@ -11,14 +13,13 @@
     h1 {
         font-size: 1.5em;
         font-weight: bold;
-        color: rgb(2, 41, 90);
+        color: $marineBlue;
         margin: 1rem;
     }
 
     .text {
         font-size: 0.8rem;
-        color: rgb(150, 153, 171);
-        // letter-spacing: 0.7px;
+        color: $coolGray;
         line-height: 1.3rem;
     }
 }

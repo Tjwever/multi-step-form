@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .goBackBtn,
 .nextBtn,
 .confirmBtn,
@@ -19,32 +21,30 @@
 
 .goBackBtn {
     background-color: inherit;
-    color: rgb(150, 153, 171);
+    color: $coolGray;
     transition: color 0.3s ease;
 
     &:hover {
-        color: rgb(2, 41, 90);
+        color: $marineBlue;
     }
 }
 
 .nextBtn {
-    // rgb(71, 61, 255); for hover
-    background-color: rgb(2, 41, 90);
-    color: rgb(240, 246, 255);
+    background-color: $marineBlue;
+    color: $magnolia;
     transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
-        background-color: rgb(71, 61, 255);
+        background-color: $purplishBlue;
     }
 }
 
 .confirmBtn {
-    // rgb(173, 190, 255); maybe hover...
-    background-color: rgb(71, 61, 255);
-    color: rgb(240, 246, 255);
+    background-color: $purplishBlue;
+    color: $magnolia;
     transition: background-color 0.3s ease, color 0.3s ease;
 
     &:hover {
-        background-color: rgb(39, 32, 161);
+        background-color: $marineBlue;
     }
 }

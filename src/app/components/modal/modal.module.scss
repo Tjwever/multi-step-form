@@ -1,9 +1,11 @@
+@import '../../styles/colors.scss';
+
 .container {
-    color: rgb(2, 41, 90);
+    color: $marineBlue;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(240, 246, 255);
+    background-color: $magnolia;
     border-radius: 20px;
     padding: 18px;
     margin: 3rem 2rem;
@@ -26,7 +28,7 @@
                 position: absolute;
                 top: 2.2rem;
                 left: 2.2rem;
-                color: rgb(240, 246, 255);
+                color: $magnolia;
             }
         }
     }
@@ -48,7 +50,7 @@
             }
 
             .text {
-                color: rgb(150, 153, 171);
+                color: $coolGray;
                 width: 30rem;
             }
 

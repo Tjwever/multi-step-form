@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .container {
     display: flex;
     justify-content: center;
@@ -22,10 +24,10 @@
     }
 
     .borderColorDefault {
-        border: 1px solid rgb(150, 153, 171);
+        border: 1px solid $coolGray;
     }
 
     .borderColorError {
-        border: 1px solid rgb(237, 53, 72);
+        border: 1px solid $strawberryRed;
     }
 }
